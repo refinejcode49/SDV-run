@@ -1,9 +1,9 @@
 class Game {
     constructor() {
-        this.startScreen = document.getElementById('game-intro');
-        this.gameScreen = document.getElementById('game-container');
-        this.gameEndScreen = document.getElementById('game-end');
-        this.player = null;
+        this.startScreen = document.getElementById("game-intro");
+        this.gameScreen = document.getElementById("game-container");
+        this.gameEndScreen = document.getElementById("game-end");
+        this.player = new Player(this.gameScreen, 40, 400, 125, 150, "./images/SDV_Sandy.png");
         this.height = 600;
         this.width = 500; 
         //on va push les obtascles de la class obstacles dans l'empty array
@@ -17,7 +17,7 @@ class Game {
         this.gameLoopFrequency = Math.round(1000/60);
     }
 
-    start(){
+    start() {
         // pour définir la hauteur et largeur de l'écran start
         this.gameScreen.style.height = `${this.height}px`;
         this.gameScreen.style.width = `${this.width}px`;
@@ -30,10 +30,15 @@ class Game {
         }, this.gameLoopFrequency);
     }
     gameLoop() {
+        console.log("game loop");
         this.update()
 
-        if(this.gameIsOver) {
+        if (this.gameIsOver) {
             clearInterval(this.gameIntervalId);
         }
+    }
+
+    update() {
+        this.player.move()
     }
 }
