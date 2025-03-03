@@ -1,10 +1,10 @@
 window.onload = function () {
-    const startButtonElement = document.getElementById("start-button");
-    const restartButtonElement = document.getElementById("restart-button");
+    const startButtonElement = document.getElementsByClassName("start-button");
+    const restartButtonElement = document.getElementsByClassName("restart-button");
     let ourNewGame;
 
     //all the event listeners here
-    startButtonElement.addEventListener("click", function() {
+    startButtonElement.addEventListener("click", function () {
       ourNewGame = new Game();
       startGame();
     });
@@ -34,8 +34,8 @@ window.onload = function () {
         } else if (event1.code === "ArrowRight") {
             ourNewGame.player.directionX = 0;
          }
-    }
-);
+        }
+    );
 
 
     //all the functions here: 
