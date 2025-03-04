@@ -3,11 +3,12 @@ class Game {
         this.startScreen = document.getElementById("game-intro");
         this.gameScreen = document.getElementById("game-container");
         this.gameEndScreen = document.getElementById("game-end");
+        this.scoreElement = document.getElementById("score");
         this.player = new Player(this.gameScreen, 40, 400, 125, 150, "./images/SDV_Sandy.png");
-        this.height = 500;
-        this.width = 600; 
+        this.height = 600;
+        this.width = 500; 
         //on va push les obtascles de la class obstacles dans l'empty array
-        this.obstacles = [new Obstacle(this.gameScreen)];
+        this.obstacles = [];
         this.lives = 4;
         this.score = 0;
         // détermine quand le jeu est en cours et quand il se termine pour commencer un new game
@@ -15,6 +16,7 @@ class Game {
         this.gameIntervalId = null;
         // indique l'interval en milliseconds (ARRONDI) pour lequel the game loop will execute. pour la plupart des écrans (1000/60) est correct =flipbook exemple.
         this.gameLoopFrequency = Math.round(1000/60);
+        this.counter = 0;
     }
 
     start() {
@@ -25,12 +27,13 @@ class Game {
         this.startScreen.style.display = "none";
         this.gameScreen.style.display = "block";
         //call the game loop function at the gameLoopFrequency delay.
-        this.gameIntervalId = setInterval(()=>{
+        this.gameIntervalId = setInterval(() => {
             this.gameLoop();
         }, this.gameLoopFrequency);
     }
     gameLoop() {
-        console.log("game loop");
+        this.counter++;
+        
         this.update()
 
         if (this.gameIsOver) {
@@ -39,6 +42,20 @@ class Game {
     }
 
     update() {
-        this.player.move()
+        //move player
+        this.player.move();
+        // move obstacle 
+        for (let i = 0; i > this.obstacles.length; i++) {
+            const currentObstacle = this.obstacles[i];
+            currentObstacle.move();
+
+            if (currentObstacle.top > 600) {
+                this.score ++;
+                this.scoreElement.innerText = this.score;
+                this.obstacles.splice(i,1);
+                currentObstacle.element.remove();
+        }
+        // si on ne touche pas l'obstacle, on augmente le score et on l'enleve de l'array des obstacles
+        }
     }
 }
