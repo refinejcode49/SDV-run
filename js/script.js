@@ -11,8 +11,8 @@ window.onload = function () {
 
     restartButtonElement.addEventListener("click", () => {
         // cache l'écran de jeu
-        ourNewGame.gameOverScreen.style.display = "none";
-        //montre l'écran de fi nde jeu
+        ourNewGame.gameEndScreenElement.style.display = "none";
+        //montre l'écran pour recommencer le jeu direct
         ourNewGame.gameScreen.style.display = "block";
         //remove the image of the player from the first game
         ourNewGame.player.element.remove();
@@ -52,7 +52,7 @@ window.onload = function () {
 
     //all the functions here: 
     function startGame() {
-        console.log("start game");
+       //console.log("start game");
         ourNewGame.start();
     }
 };

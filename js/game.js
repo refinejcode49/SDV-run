@@ -2,7 +2,7 @@ class Game {
     constructor() {
         this.startScreen = document.getElementById("game-intro");
         this.gameScreen = document.getElementById("game-screen");
-        this.gameEndScreen = document.getElementById("game-end");
+        this.gameEndScreenElement = document.getElementById("game-end");
         this.scoreElement = document.getElementById("score");
         this.livesElement = document.getElementById("lives");
         this.player = new Player(this.gameScreen, 85, 400, 90, 90, "./images/SDV_Sandy.png");
@@ -19,7 +19,7 @@ class Game {
         // indique l'interval en milliseconds (ARRONDI) pour lequel the game loop will execute. pour la plupart des écrans (1000/60) est correct =flipbook exemple.
         this.gameLoopFrequency = Math.round(1000/60);
         this.counter = 0;
-    }
+    };
 
     start() {
         // pour définir la hauteur et largeur de l'écran start
@@ -32,18 +32,20 @@ class Game {
         this.gameIntervalId = setInterval(() => {
             this.gameLoop();
         }, this.gameLoopFrequency);
-    }
+    };
+
     gameLoop() {
         this.counter++;
-        if (this.counter % 180 === 0) {
+        if (this.counter % 40 === 0) {
             this.obstacle.push(new Obstacle(this.gameScreen));
         }
+
         this.update();
 
         if (this.gameIsOver) {
-            this.gameEndScreen;
+            this.endGame();
         }
-    }
+    };
 
     update() {
         //move player
@@ -53,36 +55,35 @@ class Game {
         for (let i = 0; i < this.obstacle.length; i++) {
             const currentObstacle = this.obstacle[i];
             currentObstacle.move();
+
             if (this.player.didCollide(currentObstacle)) {
-                console.log("bang !");
                 this.obstacle.splice(i, 1);
                 i --;
                 currentObstacle.element.remove();
-                this.lives --;
+                this.lives--;
                 this.livesElement.innerText = this.lives;
-                if (this.lives === 0) {
-                    this.gameIsOver = true;
-                }
-            } else {
-                console.log("did not collide");
-            }
 
-            if (currentObstacle.top > 600) {
+                    if (this.lives === 0) {
+                        this.gameIsOver = true;
+                    };
+            };
+            
+            if (currentObstacle.top > 650) {
+                // si on ne touche pas l'obstacle, on augmente le score et on l'enleve de l'array des obstacles
                 this.score ++;
                 this.scoreElement.innerText = this.score;
                 this.obstacle.splice(i, 1);
                 i --;
                 currentObstacle.element.remove();
-            }
-        // si on ne touche pas l'obstacle, on augmente le score et on l'enleve de l'array des obstacles
-        }
-    }
+            };
+         }
+     };
 
-    gameEndScreen() {
+    endGame() {
         clearInterval(this.gameIntervalId);
         //cache le game screen
         this.gameScreen.style.display = "none";
         // montre le game end screen
-        this.gameEndScreen.style.display = "block";
-    }
-}
+        this.gameEndScreenElement.style.display = "block";
+    };
+};
