@@ -9,17 +9,29 @@ window.onload = function () {
       startGame();
     });
 
+    restartButtonElement.addEventListener("click", () => {
+        // cache l'écran de jeu
+        ourNewGame.gameOverScreen.style.display = "none";
+        //montre l'écran de fi nde jeu
+        ourNewGame.gameScreen.style.display = "block";
+        //remove the image of the player from the first game
+        ourNewGame.player.element.remove();
+        //this reassigns the ourNewGame variable
+        ourNewGame = new Game();
+        ourNewGame.start();
+      });
+
     // pour les touches clavier pour déplacer le player quand la touche est pressée
     window.addEventListener("keydown", (event) => {
         //console.log("a key was pressed", event); pour vérifier si ca marche
         if (event.code === "ArrowUp") {
-            ourNewGame.player.directionY = -1;
+            ourNewGame.player.directionY = - 4;
         } else if (event.code === "ArrowDown") {
-            ourNewGame.player.directionY = 1;
+            ourNewGame.player.directionY = 4;
         } else if (event.code === "ArrowLeft") {
-            ourNewGame.player.directionX = -1;
+            ourNewGame.player.directionX = - 4;
         } else if (event.code === "ArrowRight") {
-            ourNewGame.player.directionX = 1;
+            ourNewGame.player.directionX = 4;
         }
     });
     // meme qu'au dessus mais pour quand la touche est relachée ca arrete de deplacer le player

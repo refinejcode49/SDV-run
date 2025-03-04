@@ -1,11 +1,11 @@
 class Obstacle {
     constructor(gameScreen){
-        this.possibleXPositions = [80, 270, 270, 80, 80];
+        this.possibleXPositions = [80, 150, 270, 150, 270, 80];
         this.randomIndex = Math.floor(Math.random() * this.possibleXPositions.length);
         this.left = this.possibleXPositions[this.randomIndex];
-        this.top = -100;
-        this.width = 125;
-        this.height = 180;
+        this.top = 100;
+        this.width = 90;
+        this.height = 90;
         this.element = document.createElement("img");
         this.element.src = "./images/SDV-red-slime.png";
         this.element.style.position = "absolute";
@@ -17,10 +17,14 @@ class Obstacle {
     }
 
     move() {
-        this.top += 3;
-        this.updatePosition()
+        this.top += 4;
+        this.updatePosition();
     }
+
     updatePosition() {
         this.element.style.top = `${this.top}px`;
+        //this.element.style.left = `${this.left}px`;
     }
+
+   
 }

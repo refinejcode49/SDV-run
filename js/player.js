@@ -27,11 +27,11 @@ class Player {
         this.left += this.directionX;
         this.top += this.directionY;
         //pour faire en sorte que le player ne soit pas dans les arbres et reste dans le background-image
-        if (this.positionLeft < 40) {
-            this.positionLeft = 40;
+        if (this.left < 5) {
+            this.left = 5;
           }
-          if (this.positionLeft + this.width > 480) {
-            this.positionLeft = 480 - this.width;
+          if (this.left + this.width > 480) {
+            this.left = 480 - this.width;
           }
           // pour en haut et en bas du jeu
           if (this.top < 0) {
@@ -50,6 +50,18 @@ class Player {
     }
 
     didCollide(obstacle) {
+        const playerRect = this.element.getBoundingClientRect();
+        const obstacleRect = obstacle.element.getBoundingClientRect();
 
+        if (
+         playerRect.left < obstacleRect.right &&
+         playerRect.right > obstacleRect.left &&
+         playerRect.top < obstacleRect.bottom &&
+         playerRect.bottom > obstacleRect.top
+        ) {
+         return true;
+        } else {
+         return false;
+         }
     }
 }
