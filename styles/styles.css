@@ -5,20 +5,21 @@ body {
     padding: 0;
   }
 
-  .game-intro {
+  #game-intro {
     padding: 20px 0px;
   }
   
-  .game-container {
-    display: flex;
+  #game-container {
+    display: none;
     width: 100%;
     padding: 20px 0px;
     justify-content: center;
   }
 
-.game-screen {
+#game-screen {
     display: none;
     align-content: center;
+    padding: 20px 0px;
     overflow: hidden;
     position: relative;
     background-image: url(../images/dirt.png);
@@ -38,6 +39,6 @@ body {
     }
   }
 
-  .game-end {
+  #game-end {
     display: none;
   }

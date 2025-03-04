@@ -10,24 +10,27 @@
 <body>
     <main>
     <!--first page of the game-->
-        <div class="game-intro">
+        <div id="game-intro">
             <h1>SDV Run</h1>
             <img src="./images/Stardew_Valley_Logo.png"/>
             <p>Use the arrows to control your character</p>
             <button id="start-button">Start Game</button>
-            <div class="instructions">
+            <div id="instructions">
 
             </div>
          </div>
         <!--game-container for the stats-->
-        <div class="game-container">
-
-        
+        <div id="game-container">
+            <div>
+                <h2>Stats:</h2>
+                <p>Score:<span id="score">0</span></p> 
+                <p>Lives:<span id="lives">4</span></p>
+            </div>
             <!--during the game + game-container-->
-            <div class="game-screen"></div>
+            <div id="game-screen"></div>
         </div>
         <!-- results page with button restart-->
-        <div class="game-end">
+        <div id="game-end">
             <h2>Game Over</h2>
             <button id="restart-button">Restart</button>
 

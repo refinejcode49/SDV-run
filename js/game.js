@@ -4,10 +4,10 @@ class Game {
         this.gameScreen = document.getElementById("game-container");
         this.gameEndScreen = document.getElementById("game-end");
         this.player = new Player(this.gameScreen, 40, 400, 125, 150, "./images/SDV_Sandy.png");
-        this.height = 600;
-        this.width = 500; 
+        this.height = 500;
+        this.width = 600; 
         //on va push les obtascles de la class obstacles dans l'empty array
-        this.obstacles = [];
+        this.obstacles = [new Obstacle(this.gameScreen)];
         this.lives = 4;
         this.score = 0;
         // détermine quand le jeu est en cours et quand il se termine pour commencer un new game

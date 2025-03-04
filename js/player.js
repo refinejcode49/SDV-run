@@ -20,7 +20,7 @@ class Player {
         this.element.style.width = `${width}px`;
         this.element.style.height = `${height}px`;
         // pour ajouter les propriétés du player ainsi que son image on doit appendChild ou ajouter l'element player au gamescreen (parce que c'est la qu'on va jouer)
-        this.gameScreen.appendChild(this.element);
+        gameScreen.appendChild(this.element);
     }
 
     move() {

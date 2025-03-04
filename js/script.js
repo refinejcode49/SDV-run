@@ -1,10 +1,10 @@
 window.onload = function () {
-    const startButtonElement = document.getElementsByClassName("start-button");
-    const restartButtonElement = document.getElementsByClassName("restart-button");
+    const startButtonElement = document.getElementById("start-button");
+    const restartButtonElement = document.getElementById("restart-button");
     let ourNewGame;
 
     //all the event listeners here
-    startButtonElement.addEventListener("click", function () {
+    startButtonElement.addEventListener("click", () => {
       ourNewGame = new Game();
       startGame();
     });
