@@ -2,9 +2,13 @@ class Game {
     constructor() {
         this.startScreen = document.getElementById("game-intro");
         this.gameScreen = document.getElementById("game-screen");
-        this.gameEndScreenElement = document.getElementById("game-end");
+        //this.gameEndScreenElement = document.getElementById("game-end");
+        this.victoryGameEndScreenElement = document.getElementById("victory-screen");
+        this.defeatGameEndScreenElement = document.getElementById("defeat-screen");
+        this.statsElement = document.getElementById("stats");
         this.scoreElement = document.getElementById("score");
         this.livesElement = document.getElementById("lives");
+        this.timerElement = document.getElementById("timer");
         this.player = new Player(this.gameScreen, 85, 400, 90, 90, "./images/SDV_Sandy.png");
         this.playerSpeed = 2;
         this.height = 600;
@@ -19,6 +23,8 @@ class Game {
         // indique l'interval en milliseconds (ARRONDI) pour lequel the game loop will execute. pour la plupart des écrans (1000/60) est correct =flipbook exemple.
         this.gameLoopFrequency = Math.round(1000/60);
         this.counter = 0;
+        this.time = 10;
+        this.playerInterval;
     };
 
     start() {
@@ -28,10 +34,20 @@ class Game {
         //lorsque l'on commence le jeu on cache le startScreen et montre le GameScreen
         this.startScreen.style.display = "none";
         this.gameScreen.style.display = "block";
+        this.statsElement.style.display = "block";
         //call the game loop function at the gameLoopFrequency delay.
         this.gameIntervalId = setInterval(() => {
             this.gameLoop();
         }, this.gameLoopFrequency);
+        this.playerInterval = setInterval(() => {
+            this.time --;
+            this.timerElement.innerText = this.time;
+            if (this.time === 0) {
+                clearInterval(this.playerInterval);
+                console.log("victory !");
+                this.victoryEndGame();
+            }
+        }, 1000);
     };
 
     gameLoop() {
@@ -43,7 +59,9 @@ class Game {
         this.update();
 
         if (this.gameIsOver) {
-            this.endGame();
+            clearInterval(this.playerInterval);
+            console.log("defeat !")
+            this.defeatEndGame();
         }
     };
 
@@ -78,12 +96,32 @@ class Game {
             };
          }
      };
-
-    endGame() {
+     //to remove the obstacle when I restart the game
+     clearObstacles() {
+        this.obstacle.forEach(obstacle => obstacle.element.remove());
+        this.obstacle = [];
+    }
+     /*endGame() {
         clearInterval(this.gameIntervalId);
         //cache le game screen
         this.gameScreen.style.display = "none";
         // montre le game end screen
         this.gameEndScreenElement.style.display = "block";
+    };*/
+
+    victoryEndGame() {
+        clearInterval(this.gameIntervalId);
+        //cache le game screen
+        this.gameScreen.style.display = "none";
+        // montre le victory screen
+        this.victoryGameEndScreenElement.style.display = "block";
+    };
+
+    defeatEndGame() {
+        clearInterval(this.gameIntervalId);
+        //cache le game screen
+        this.gameScreen.style.display = "none";
+        // montre le defeat screen
+        this.defeatGameEndScreenElement.style.display = "block";
     };
 };

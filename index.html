@@ -5,37 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="./styles/styles.css" />
-    <title>SDV Run</title>
+    <title>Farm Defenser mini game</title>
+    <!-- image icon pour l'onglet navigateur -->
 </head>
 <body>
     <main>
     <!--first page of the game-->
         <div id="game-intro">
-            <h1>SDV Run</h1>
+            <h1>Farm Defenser</h1>
             <img src="./images/Stardew_Valley_Logo.png"/>
-            <p>Use the arrows to control your character</p>
-            <button id="start-button">Start Game</button>
-            <div id="instructions">
+            <p>
+                Welcome, young farmer !
 
+                A perilous night awaits you. Monsters threaten your precious farm. 
+                Your mission: Survive 30 seconds and protect your crops!
+            </p>
+            
+            <div id="instructions">
+                <p>Use the arrows to control your character</p>
+                <p>🌱 Collect bonuses</p>
+                <p>🏃 Avoid the monsters </p>
+                <p>⏱️ Resist for 30 seconds </p>
+                <button id="start-button">Start Game</button>
             </div>
             <button id="sound">mute sound</button>
          </div>
         <!--game-container for the stats-->
         <div id="game-container">
-            <div>
+            <div id="stats">
                 <h2>Stats:</h2>
-                <p>Score:<span id="score">0</span></p> 
-                <p>Lives:<span id="lives">4</span></p>
+                <p>Score:<span id="score"> 0</span></p> 
+                <p>Lives:<span id="lives"> 4</span></p>
+                <p>Remaining time:<span id="timer"> 30</span></p>
             </div>
             <!--during the game + game-container-->
             <div id="game-screen"></div>
         </div>
         <!-- results page with button restart-->
-        <div id="game-end">
-            <h2>Game Over</h2>
-            <button id="restart-button">Restart</button>
+         <div>
+            <!--<div id="game-end">
+                <h2>GAME OVER</h2>
+                <button id="restart-button">Restart</button>-->
+            <div id="victory-screen">
+                <h2>CONGRATULATIONS !</h2>
+                <p>You protected your farm to the end!</p>
+                <button id="victory-restart-button">Restart</button>
+            </div>
+            <div id="defeat-screen">
+                <h2>Game Over 💀</h2>
+                <p>Your farm has fallen!</p>
+                <button id="defeat-restart-button">Restart</button>
+            </div>
         </div>
-
     </main>
     <script type="text/javascript" src="./js/obstacle.js"></script>
     <script type="text/javascript" src="./js/player.js"></script>

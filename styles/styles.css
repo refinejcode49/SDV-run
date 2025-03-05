@@ -15,8 +15,11 @@ body {
     padding: 20px 0px;
     justify-content: center;
   }
-
-#game-screen {
+  #stats {
+    display: none;
+  }
+  
+  #game-screen {
     display: none;
     align-content: center;
     padding: 20px 0px;
@@ -40,5 +43,12 @@ body {
   }
 
   #game-end {
+    display: none;
+  }
+  #victory-screen {
+    display: none;
+  }
+    
+  #defeat-screen {
     display: none;
   }

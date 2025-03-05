@@ -1,6 +1,7 @@
 window.onload = function () {
     const startButtonElement = document.getElementById("start-button");
-    const restartButtonElement = document.getElementById("restart-button");
+    const victoryRestartButtonElement = document.getElementById("victory-restart-button");
+    const defeatRestartButtonElement = document.getElementById("defeat-restart-button");
     let ourNewGame;
 
     //all the event listeners here
@@ -9,13 +10,29 @@ window.onload = function () {
       startGame();
     });
 
-    restartButtonElement.addEventListener("click", () => {
-        // cache l'écran de jeu
-        ourNewGame.gameEndScreenElement.style.display = "none";
+    victoryRestartButtonElement.addEventListener("click", () => {
+        // cache l'écran victoire fin de jeu
+        ourNewGame.victoryGameEndScreenElement.style.display = "none";
         //montre l'écran pour recommencer le jeu direct
         ourNewGame.gameScreen.style.display = "block";
         //remove the image of the player from the first game
         ourNewGame.player.element.remove();
+        //to remove the past obstacles from the game container
+        ourNewGame.clearObstacles();
+        //this reassigns the ourNewGame variable
+        ourNewGame = new Game();
+        ourNewGame.start();
+      });
+
+      defeatRestartButtonElement.addEventListener("click", () => {
+        // cache l'écran victoire fin de jeu
+        ourNewGame.defeatGameEndScreenElement.style.display = "none";
+        //montre l'écran pour recommencer le jeu direct
+        ourNewGame.gameScreen.style.display = "block";
+        //remove the image of the player from the first game
+        ourNewGame.player.element.remove();
+        //to remove the past obstacles from the game container
+        ourNewGame.clearObstacles();
         //this reassigns the ourNewGame variable
         ourNewGame = new Game();
         ourNewGame.start();
