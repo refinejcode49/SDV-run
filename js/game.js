@@ -15,6 +15,7 @@ class Game {
         this.width = 500; 
         //on va push les obtascles de la class obstacle dans l'empty array
         this.obstacle = [];
+        this.goodObstacle = [];
         this.lives = 4;
         this.score = 0;
         // détermine quand le jeu est en cours et quand il se termine pour commencer un new game
@@ -23,7 +24,7 @@ class Game {
         // indique l'interval en milliseconds (ARRONDI) pour lequel the game loop will execute. pour la plupart des écrans (1000/60) est correct =flipbook exemple.
         this.gameLoopFrequency = Math.round(1000/60);
         this.counter = 0;
-        this.time = 10;
+        this.time = 30;
         this.playerInterval;
     };
 
@@ -54,6 +55,10 @@ class Game {
         this.counter++;
         if (this.counter % 40 === 0) {
             this.obstacle.push(new Obstacle(this.gameScreen));
+        }
+
+        if (this.counter % 80 === 0) {
+            this.goodObstacle.push(new GoodObstacle(this.gameScreen));
         }
 
         this.update();
@@ -95,12 +100,35 @@ class Game {
                 currentObstacle.element.remove();
             };
          }
+            //this is for the 'good' obstacle
+            for (let i = 0; i < this.goodObstacle.length; i++) {
+                const currentGoodObstacle = this.goodObstacle[i];
+                currentGoodObstacle.move();
+                //check if the obstacle is colliding with the player
+                if (this.player.didCollide(currentGoodObstacle)) {
+                 //remove the red car from the array in JS
+                     this.goodObstacle.splice(i, 1);
+                    i--;
+                    //dont forget to remove the img element from the html
+                    currentGoodObstacle.element.remove();
+                    this.score = this.score +5;
+                    this.scoreElement.innerText = this.score;
+                }
+            }
      };
+
      //to remove the obstacle when I restart the game
      clearObstacles() {
         this.obstacle.forEach(obstacle => obstacle.element.remove());
         this.obstacle = [];
     }
+
+    //to remove the good obstacle when I restart the game
+    cleargoodObstacles() {
+        this.goodObstacle.forEach(goodObstacle => goodObstacle.element.remove());
+        this.obstacle = [];
+    }
+
      /*endGame() {
         clearInterval(this.gameIntervalId);
         //cache le game screen

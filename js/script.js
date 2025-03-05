@@ -19,6 +19,7 @@ window.onload = function () {
         ourNewGame.player.element.remove();
         //to remove the past obstacles from the game container
         ourNewGame.clearObstacles();
+        ourNewGame.cleargoodObstacles();
         //this reassigns the ourNewGame variable
         ourNewGame = new Game();
         ourNewGame.start();
@@ -33,6 +34,7 @@ window.onload = function () {
         ourNewGame.player.element.remove();
         //to remove the past obstacles from the game container
         ourNewGame.clearObstacles();
+        ourNewGame.cleargoodObstacles();
         //this reassigns the ourNewGame variable
         ourNewGame = new Game();
         ourNewGame.start();
