@@ -5,6 +5,7 @@ class Game {
         //this.gameEndScreenElement = document.getElementById("game-end");
         this.victoryGameEndScreenElement = document.getElementById("victory-screen");
         this.defeatGameEndScreenElement = document.getElementById("defeat-screen");
+        this.highScoreElement = document.getElementById("highscores");
         this.statsElement = document.getElementById("stats");
         this.scoreElement = document.getElementById("score");
         this.livesElement = document.getElementById("lives");
@@ -16,15 +17,19 @@ class Game {
         //on va push les obtascles de la class obstacle dans l'empty array
         this.obstacle = [];
         this.goodObstacle = [];
-        this.lives = 5;
+        this.lives = 4;
         this.score = 0;
+        this.victory = new Audio("./media/SDV_Victory.mp3")
+        this.victory.volume = 0.4;
+        this.defeat = new Audio("./media/SDV_Defeat.mp3")
+        this.defeat.volume = 0.4;
         // détermine quand le jeu est en cours et quand il se termine pour commencer un new game
         this.gameIsOver = false;
         this.gameIntervalId = null;
         // indique l'interval en milliseconds (ARRONDI) pour lequel the game loop will execute. pour la plupart des écrans (1000/60) est correct =flipbook exemple.
         this.gameLoopFrequency = Math.round(1000/60);
         this.counter = 0;
-        this.time = 30;
+        this.time = 16;
         this.playerInterval;
     };
 
@@ -32,6 +37,12 @@ class Game {
         // pour définir la hauteur et largeur de l'écran start
         this.gameScreen.style.height = `${this.height}px`;
         this.gameScreen.style.width = `${this.width}px`;
+        this.lives = 4;
+        this.livesElement.innerText = this.lives;
+        /*this.score = 0;
+        this.scoreElement.innerText = this.score;
+        this.time = 22;
+        this.timerElement = this.time;*/
         //lorsque l'on commence le jeu on cache le startScreen et montre le GameScreen
         this.startScreen.style.display = "none";
         this.gameScreen.style.display = "flex";
@@ -65,7 +76,7 @@ class Game {
 
         if (this.gameIsOver) {
             clearInterval(this.playerInterval);
-            console.log("defeat !")
+            //console.log("defeat !")
             this.defeatEndGame();
         }
     };
@@ -130,6 +141,7 @@ class Game {
      clearObstacles() {
         this.obstacle.forEach(obstacle => obstacle.element.remove());
         this.obstacle = [];
+        //this.lives = 4;
     }
 
     //to remove the good obstacle when I restart the game
@@ -144,6 +156,23 @@ class Game {
         this.gameScreen.style.display = "none";
         // montre le victory screen
         this.victoryGameEndScreenElement.style.display = "block";
+        this.victory.play();
+        //pour les highscores
+        const scoreInStorage = JSON.parse(localStorage.getItem("highscores"));
+        if (scoreInStorage) {
+            scoreInStorage.push(this.score);
+            const topFourScores = scoreInStorage.sort((a, b) => b - a).slice(0, 4);
+            localStorage.setItem("highscores", JSON.stringify(topFourScores));
+        } else {
+            localStorage.setItem("highscores", JSON.stringify([this.score]));
+        }
+       const updatedScoresInStorage = JSON.parse(localStorage.getItem("highscores"));
+       
+       updatedScoresInStorage.forEach((oneScore) => {
+         const ourLiElement = document.createElement("li");
+         ourLiElement.innerText = oneScore;
+         this.highScoreElement.appendChild(ourLiElement);
+       });
     };
 
     defeatEndGame() {
@@ -152,5 +181,7 @@ class Game {
         this.gameScreen.style.display = "none";
         // montre le defeat screen
         this.defeatGameEndScreenElement.style.display = "block";
+        this.defeat.play();
     };
-};
+
+}   

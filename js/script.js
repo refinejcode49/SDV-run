@@ -51,7 +51,7 @@ window.onload = function () {
             ourNewGame.player.directionX = - 10;
         } else if (event.code === "ArrowRight") {
             ourNewGame.player.directionX = 10;
-        } else if(event.code === "KeyC") {
+        } else if(event.code === "KeyV") {
                 ourNewGame.player.changeImage("./images/cute_venom.png")
             }
         });

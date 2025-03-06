@@ -67,6 +67,10 @@
     color: white;
   }
 
+  .underline {
+    text-decoration: underline;
+    font-weight: 700;
+  }
   .arrows {
     width: 4rem;
     height: 4rem;
@@ -188,6 +192,30 @@
     border-radius: 0.5rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
+  }
+
+  #victory-screen h3 {
+    font-family: 'Fredoka';
+    font-size: 2rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: red;
+  }
+
+  #victory-screen ol {
+    font-family: 'Cabin', sans-serif;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: white;
+    counter-reset: item;
+    list-style-type: none;
+  }
+
+  #victory-screen li::before {
+    content: counter(item) ". ";
+    counter-increment: item;
+    color: red;
   }
     
   #defeat-screen {

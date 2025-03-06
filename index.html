@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Fredoka:wdth,wght@87.5,300..700&family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="icon" href="../SDV-run/images/SDV_favicon.png"
+    <link rel="icon" href="../SDV-run/images/SDV_favicon.png" />
     <title>Farm Defenser mini game</title>
     <!-- image icon pour l'onglet navigateur -->
 </head>
@@ -20,9 +20,8 @@
             <h1>FARM DEFENSER</h1>
             <!--<img src="./images/Stardew_Valley_Logo.png"/>-->
             <h2>Welcome, young farmer !</h2>
-            <p>A perilous night awaits you. Monsters threaten your precious farm. 
-                Your mission: Survive 30 seconds and protect your crops!
-            </p>
+            <p>A perilous night awaits you. Monsters threaten your precious farm.</p><br>
+            <p><span class="underline">Your mission:</span> Survive 15 seconds and protect your crops!</p>
             
             <div id="instructions">
                 <img class="arrows" src="../SDV-run/images/boutons.png" alt="arrows-icon" />
@@ -30,7 +29,7 @@
                 <p>🌱 Collect as much bonuses <img class="starfruit" src="../SDV-run/images/SDV_Starfruit.png" alt="starfruit-image"/> & <img class="coffee-bean" src="../SDV-run/images/SDV_Coffee_Bean.png" alt="coffee-bean-image"/> as you can</p>
                 <p>🏃 Avoid the falling monsters <br> 
                     <img class="bat" src="../SDV-run/images/SDV_Bat.png" alt="bat-picture"/></p> <img class="skull" src="../SDV-run/images/SDV_Haunted_Skull.png" alt="skull-picture"/> <span class="ampersand">& </span> <img class="ghost" src="../SDV-run/images/SDV_Ghost.png" alt="ghost-picture"/>
-                <p>⏱️ Resist for 30 seconds </p>
+                <p>⏱️ Resist for 15 seconds </p>
                 <button id="start-button">Start Game</button>
             </div>
             <!--<button id="sound">mute sound</button>-->
@@ -40,7 +39,7 @@
             <div id="stats">
                 <p>Score: <span id="score"> 0</span></p> 
                 <p>Lives: <span id="lives"> 4</span></p>
-                <p>Remaining time: <span id="timer"> 30</span></p>
+                <p>Remaining time: <span id="timer"> 15</span></p>
             </div>
             <!--during the game + game-container-->
             <div id="game-screen"></div>
@@ -53,6 +52,8 @@
             <div id="victory-screen">
                 <h2>CONGRATULATIONS !</h2>
                 <p>You protected your farm to the end!</p>
+                <h3>High Scores</h3>
+                <ol id="highscores"></ol>
                 <button id="victory-restart-button">Restart</button>
             </div>
             <div id="defeat-screen">

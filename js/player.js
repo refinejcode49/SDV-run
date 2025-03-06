@@ -7,8 +7,6 @@ class Player {
         this.height = height;
         this.directionX = 0;
         this.directionY = 0;
-       /* this.ghost = new Audio("./media/SDV_ghost.wav");
-        this.ghost.volume = 0.5;*/
         // on crée un nouvel élement dans Js pour l'image du player
         this.element = document.createElement("img");
         // on définit la source de l'image avec l'argument dans le constructor
@@ -61,13 +59,14 @@ class Player {
          playerRect.top < obstacleRect.bottom &&
          playerRect.bottom > obstacleRect.top
         ) {
+          
          return true;
         } else {
          return false;
          }
     }
 
-    // to change the image of the player
+    // to change the image of the player by pressing V
     changeImage(newImageSrc) {
       this.element.src = newImageSrc;
     }
