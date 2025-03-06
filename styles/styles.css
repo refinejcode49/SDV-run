@@ -1,4 +1,26 @@
-body {
+  .press-start-2p-regular {
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  .fredoka-custom {
+    font-family: "Fredoka", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+    font-variation-settings: "wdth" 87.5;
+  }
+
+  .cabin-custom {
+    font-family: "Cabin", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+  }
+
+  body {
     padding: 0;
     text-align: center;
     margin: 0;
@@ -20,19 +42,26 @@ body {
     position: absolute; 
     top: 50%; 
     left: 50%; 
-    transform: translate(-50%, -50%); 
-    border: 2px solid #000;
+    transform: translate(-50%, -50%);
+    border: 2px solid #0a4d90;
   }
 
   #game-intro h1 {
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Press Start 2P', system-ui;
     font-size: 4.5rem;
     color: #047734;
     text-shadow: 12px 12px 14px rgba(0,0,0,0.5);
   }
 
+  #game-intro h2 {
+    font-family: 'Fredoka';
+    font-size: 2.5rem;
+    color: white;
+  }
+
   #game-intro p {
     font-family: 'Cabin', sans-serif;
+    font-size: 1.25rem;
     line-height: 1.6;
     margin-bottom: 1rem;
     color: white;
@@ -51,12 +80,12 @@ body {
   }
 
   #start-button {
-    font-family: 'Fredoka One', cursive;
+    font-family: 'Fredoka', system-ui;
     background-color: #2ecc71;
     color: white;
     border: none;
     padding: 0.5rem 1rem;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     border-radius: 0.5rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -74,11 +103,18 @@ body {
   #stats {
     display: none;
     /*Quand ce sera en flex*/
-    flex-flow: row;
+    flex-flow: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
     font-family: 'Cabin', sans-serif;
     line-height: 1.6;
     margin-bottom: 1rem;
     color: white;
+  }
+
+  #stats p {
+    font-size: 1.5rem;
   }
 
   #game-screen {
@@ -95,7 +131,7 @@ body {
     top: 50%; 
     left: 50%; 
     transform: translate(-50%, -50%); 
-    border: 2px solid #000;
+    border: 2px solid #0a4d90;
     background-image: url(../images/SDV_grass.png);
     background-size: cover;
     animation: slide 5s linear infinite;
@@ -126,29 +162,30 @@ body {
     top: 50%; 
     left: 50%; 
     transform: translate(-50%, -50%); 
-    border: 2px solid #000;
+    border: 2px solid #0a4d90;
   }
   #victory-screen h2 {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 3rem;
+    font-family: 'Press Start 2P', system-ui;
+    font-size: 4.5rem;
     color: #047734;
     text-shadow: 12px 12px 14px rgba(0,0,0,0.5);
   }
   #victory-screen p {
     font-family: 'Cabin', sans-serif;
+    font-size: 1.25rem;
     line-height: 1.6;
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
     color: white;
   }
 
   #victory-screen button {
-    font-family: 'Fredoka One', cursive;
+    font-family: 'Fredoka', system-ui;
     background-color: #2ecc71;
     color: white;
     border: none;
-    padding: 10px 20px;
-    font-size: 2rem;
-    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-size: 2.5rem;
+    border-radius: 0.5rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
@@ -168,26 +205,27 @@ body {
     border: 2px solid #000;
   }
   #defeat-screen h2 {
-    font-family: 'Press Start 2P', cursive;
-    font-size: 3rem;
+    font-family: 'Press Start 2P', system-ui;
+    font-size: 4.5rem;
     color: #047734;
     text-shadow: 12px 12px 14px rgba(0,0,0,0.5);
   }
   #defeat-screen p {
     font-family: 'Cabin', sans-serif;
+    font-size: 1.25rem;
     line-height: 1.6;
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
     color: white;
   }
 
   #defeat-screen button {
-    font-family: 'Fredoka One', cursive;
+    font-family: 'Fredoka', system-ui;
     background-color: #2ecc71;
     color: white;
     border: none;
-    padding: 10px 20px;
-    font-size: 2rem;
-    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-size: 2.5rem;
+    border-radius: 0.5rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
