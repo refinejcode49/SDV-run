@@ -2,10 +2,9 @@ class GoodObstacle {
     constructor(gameScreen){
         this.possibleImages = [
             "./images/SDV_Starfruit.png",
-            "./images/SDV_Cauliflower.png",
             "./images/SDV_Coffee_Bean.png",
         ];
-        this.possibleXPositions = [450, 27, 44];
+        this.possibleXPositions = [450, 270, 100, 50, 80, 44, 111, 700];
         this.randomIndex = Math.floor(Math.random() * this.possibleXPositions.length);
         this.left = this.possibleXPositions[this.randomIndex];
         this.top = Math.floor(Math.random() * (700 - 90)); //-100;

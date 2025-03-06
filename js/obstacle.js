@@ -4,9 +4,8 @@ class Obstacle {
             "./images/SDV_Bat.png",
             "./images/SDV_Ghost.png",
             "./images/SDV_Haunted_Skull.png",
-            "./images/Special_Red_Slime.png"
         ]
-        this.possibleXPositions = [700, 450, 2, 622, 27, 44, 27, 400, 622, 2, 450, 700];
+        this.possibleXPositions = [700, 450, 111, 622, 27, 44, 270, 400, 622, 2, 150, 700];
         this.randomIndex = Math.floor(Math.random() * this.possibleXPositions.length);
         this.left = this.possibleXPositions[this.randomIndex];
         this.top = -100;

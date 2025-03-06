@@ -3,14 +3,15 @@ body {
     text-align: center;
     margin: 0;
     padding: 0;
-    background-image: url(../images/SDV_stardewbackground.png);
+    background-color: #0a4d90;
+    background-image: url(../images/SDV_background.png);
     background-size: cover;
     background-repeat: no-repeat;
   }
 
   #game-intro {
     padding: 1.5rem;
-    background-color: #0a4d90;
+    background: linear-gradient(45deg, #047734, #0a4d90);
     border-radius: 2rem;
     width: 50%; 
     max-width: 800px;
@@ -26,7 +27,7 @@ body {
   #game-intro h1 {
     font-family: 'Press Start 2P', cursive;
     font-size: 4.5rem;
-    color: #2ecc71;
+    color: #047734;
     text-shadow: 12px 12px 14px rgba(0,0,0,0.5);
   }
 
@@ -83,7 +84,7 @@ body {
   #game-screen {
     display: none;
     /*align-content: center;*/
-    background-color: #0a4d90;
+    background: linear-gradient(45deg, #047734, #0a4d90);
     border-radius: 50px;
     /*overflow: hidden;
     position: relative;*/
@@ -116,7 +117,7 @@ body {
   #victory-screen {
     display: none;
     padding: 2.5rem;
-    background-color: #0a4d90;
+    background: linear-gradient(45deg, #047734, #0a4d90);
     border-radius: 4rem;
     width: 80%; 
     height: auto;
@@ -130,7 +131,7 @@ body {
   #victory-screen h2 {
     font-family: 'Press Start 2P', cursive;
     font-size: 3rem;
-    color: #2ecc71;
+    color: #047734;
     text-shadow: 12px 12px 14px rgba(0,0,0,0.5);
   }
   #victory-screen p {
@@ -155,7 +156,7 @@ body {
   #defeat-screen {
     display: none;
     padding: 2.5rem;
-    background-color: #0a4d90;
+    background: linear-gradient(45deg, #047734, #0a4d90);
     border-radius: 4rem;
     width: 80%; 
     height: auto;
@@ -169,7 +170,7 @@ body {
   #defeat-screen h2 {
     font-family: 'Press Start 2P', cursive;
     font-size: 3rem;
-    color: #2ecc71;
+    color: #047734;
     text-shadow: 12px 12px 14px rgba(0,0,0,0.5);
   }
   #defeat-screen p {
