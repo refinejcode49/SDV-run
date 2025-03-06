@@ -1,13 +1,22 @@
 class Obstacle {
     constructor(gameScreen){
-        this.possibleXPositions = [40, 80, 150, 270, 150, 270, 40, 80];
+        this.possibleImages = [
+            "./images/SDV_Bat.png",
+            "./images/SDV_Ghost.png",
+            "./images/SDV_Haunted_Skull.png",
+            "./images/Special_Red_Slime.png"
+        ]
+        this.possibleXPositions = [700, 450, 2, 622, 27, 44, 27, 400, 622, 2, 450, 700];
         this.randomIndex = Math.floor(Math.random() * this.possibleXPositions.length);
         this.left = this.possibleXPositions[this.randomIndex];
         this.top = -100;
         this.width = 90;
         this.height = 90;
+        this.randomImageIndex = Math.floor(
+            Math.random() * this.possibleImages.length
+          );
         this.element = document.createElement("img");
-        this.element.src = "./images/SDV-red-slime.png";
+        this.element.src = this.possibleImages[this.randomImageIndex];
         this.element.style.position = "absolute";
         this.element.style.top = `${this.top}px`;
         this.element.style.left = `${this.left}px`;
@@ -17,7 +26,7 @@ class Obstacle {
     }
 
     move() {
-        this.top += 9;
+        this.top += 8;
         this.updatePosition();
     }
 

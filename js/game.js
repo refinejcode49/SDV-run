@@ -9,14 +9,14 @@ class Game {
         this.scoreElement = document.getElementById("score");
         this.livesElement = document.getElementById("lives");
         this.timerElement = document.getElementById("timer");
-        this.player = new Player(this.gameScreen, 85, 400, 90, 90, "./images/SDV_Sandy.png");
-        this.playerSpeed = 2;
-        this.height = 600;
-        this.width = 500; 
+        this.player = new Player(this.gameScreen, 85, 400, 90, 90, "./images/SDV_Perso.png");
+        this.playerSpeed = 10;
+        this.height = 700;
+        this.width = 800; 
         //on va push les obtascles de la class obstacle dans l'empty array
         this.obstacle = [];
         this.goodObstacle = [];
-        this.lives = 4;
+        this.lives = 5;
         this.score = 0;
         // détermine quand le jeu est en cours et quand il se termine pour commencer un new game
         this.gameIsOver = false;
@@ -34,8 +34,8 @@ class Game {
         this.gameScreen.style.width = `${this.width}px`;
         //lorsque l'on commence le jeu on cache le startScreen et montre le GameScreen
         this.startScreen.style.display = "none";
-        this.gameScreen.style.display = "block";
-        this.statsElement.style.display = "block";
+        this.gameScreen.style.display = "flex";
+        this.statsElement.style.display = "flex";
         //call the game loop function at the gameLoopFrequency delay.
         this.gameIntervalId = setInterval(() => {
             this.gameLoop();
@@ -53,11 +53,11 @@ class Game {
 
     gameLoop() {
         this.counter++;
-        if (this.counter % 40 === 0) {
+        if (this.counter % 20 === 0) {
             this.obstacle.push(new Obstacle(this.gameScreen));
         }
 
-        if (this.counter % 80 === 0) {
+        if (this.counter % 100 === 0) {
             this.goodObstacle.push(new GoodObstacle(this.gameScreen));
         }
 
@@ -85,13 +85,14 @@ class Game {
                 currentObstacle.element.remove();
                 this.lives--;
                 this.livesElement.innerText = this.lives;
+                //this.player.ghost.play();
 
                     if (this.lives === 0) {
                         this.gameIsOver = true;
                     };
             };
             
-            if (currentObstacle.top > 650) {
+            if (currentObstacle.top > 620) {
                 // si on ne touche pas l'obstacle, on augmente le score et on l'enleve de l'array des obstacles
                 this.score ++;
                 this.scoreElement.innerText = this.score;
@@ -103,7 +104,8 @@ class Game {
             //this is for the 'good' obstacle
             for (let i = 0; i < this.goodObstacle.length; i++) {
                 const currentGoodObstacle = this.goodObstacle[i];
-                currentGoodObstacle.move();
+                
+                //currentGoodObstacle.move(); GoodObstacle static on the gamescreen
                 //check if the obstacle is colliding with the player
                 if (this.player.didCollide(currentGoodObstacle)) {
                  //remove the red car from the array in JS
@@ -114,6 +116,13 @@ class Game {
                     this.score = this.score +5;
                     this.scoreElement.innerText = this.score;
                 }
+
+                if (currentGoodObstacle.top > 620) {
+                    // si on ne touche pas le bonus, il faut le retirer 
+                    this.goodObstacle.splice(i, 1);
+                    i --;
+                    currentGoodObstacle.element.remove();
+                };
             }
      };
 
@@ -128,14 +137,6 @@ class Game {
         this.goodObstacle.forEach(goodObstacle => goodObstacle.element.remove());
         this.obstacle = [];
     }
-
-     /*endGame() {
-        clearInterval(this.gameIntervalId);
-        //cache le game screen
-        this.gameScreen.style.display = "none";
-        // montre le game end screen
-        this.gameEndScreenElement.style.display = "block";
-    };*/
 
     victoryEndGame() {
         clearInterval(this.gameIntervalId);

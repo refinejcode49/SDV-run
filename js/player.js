@@ -7,6 +7,8 @@ class Player {
         this.height = height;
         this.directionX = 0;
         this.directionY = 0;
+       /* this.ghost = new Audio("./media/SDV_ghost.wav");
+        this.ghost.volume = 0.5;*/
         // on crée un nouvel élement dans Js pour l'image du player
         this.element = document.createElement("img");
         // on définit la source de l'image avec l'argument dans le constructor
@@ -27,18 +29,18 @@ class Player {
         this.left += this.directionX;
         this.top += this.directionY;
         //pour faire en sorte que le player ne soit pas dans les arbres et reste dans le background-image
-        if (this.left < 5) {
-            this.left = 5;
+        if (this.left < 10) {
+            this.left = 10;
           }
-          if (this.left + this.width > 480) {
-            this.left = 480 - this.width;
+          if (this.left + this.width > 790) {
+            this.left = 790 - this.width;
           }
           // pour en haut et en bas du jeu
           if (this.top < 0) {
             this.top = 0;
           }
-          if (this.top + this.height > 640) {
-            this.top = 640 - this.height;
+          if (this.top + this.height > 710) {
+            this.top = 710 - this.height;
           }
         this.updatePosition();
                
@@ -63,5 +65,10 @@ class Player {
         } else {
          return false;
          }
+    }
+
+    // to change the image of the player
+    changeImage(newImageSrc) {
+      this.element.src = newImageSrc;
     }
 }

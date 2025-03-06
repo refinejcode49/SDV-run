@@ -44,15 +44,18 @@ window.onload = function () {
     window.addEventListener("keydown", (event) => {
         //console.log("a key was pressed", event); pour vérifier si ca marche
         if (event.code === "ArrowUp") {
-            ourNewGame.player.directionY = - 4;
+            ourNewGame.player.directionY = - 10;
         } else if (event.code === "ArrowDown") {
-            ourNewGame.player.directionY = 4;
+            ourNewGame.player.directionY = 10;
         } else if (event.code === "ArrowLeft") {
-            ourNewGame.player.directionX = - 4;
+            ourNewGame.player.directionX = - 10;
         } else if (event.code === "ArrowRight") {
-            ourNewGame.player.directionX = 4;
-        }
-    });
+            ourNewGame.player.directionX = 10;
+        } else if(event.code === "KeyC") {
+                ourNewGame.player.changeImage("./images/cute_venom.png")
+            }
+        });
+    
     // meme qu'au dessus mais pour quand la touche est relachée ca arrete de deplacer le player
     window.addEventListener("keyup", (event1) => {
         //console.log("a key was pressed", event); pour vérifier si ca marche
